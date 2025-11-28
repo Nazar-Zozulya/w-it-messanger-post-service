@@ -1,0 +1,26 @@
+{
+  "name": "w-it-messanger-post-service",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "prisma": {
+		"schema": "./prisma"
+	},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "nodemon src/server.ts",
+    "prisma:format": "prisma format",
+    "prisma:migrate": "prisma migrate dev",
+    "prisma:generate": "prisma generate"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/express": "^5.0.5",
+    "dotenv": "^17.2.3",
+    "express": "^5.1.0",
+    "nodemon": "^3.1.11",
+    "typescript": "^5.9.3"
+  }
+}
