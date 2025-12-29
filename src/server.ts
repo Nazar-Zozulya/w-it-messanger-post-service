@@ -6,7 +6,7 @@ import cors from 'cors'
 const app: Express = express()
 
 
-const PORT: number = Number(process.env.PORT) || 8000
+const PORT: number = Number(process.env.PORT) || 8001
 
 const HOST: string = process.env.HOST || "localhost"
 
