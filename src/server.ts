@@ -1,6 +1,6 @@
 import express, {Express} from 'express'
 import cors from 'cors'
-
+import postRouter from './postApp/user.router'
 
 
 const app: Express = express()
@@ -16,6 +16,8 @@ app.use(cors({
     credentials: true
 }));
 app.use(express.json())
+
+app.use("/api/post", postRouter)
 
 
 app.listen(PORT, HOST, ()=>{
