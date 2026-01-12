@@ -11,5 +11,10 @@ export const postController: PostController = {
         const result = await postService.createPost(data)
 
         res.json(result)
+    },
+    getAllPosts: async (req, res) => {
+        const result = await postService.getAllPosts()
+
+        res.json(result)
     }
 }

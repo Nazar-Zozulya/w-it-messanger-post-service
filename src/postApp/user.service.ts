@@ -1,5 +1,5 @@
-import { PostService } from "../types/post.types";
 import { error, success } from "../tools/result"
+import { PostService } from "../types/post.types";
 import { postRepository } from "./user.repository";
 
 export const postService: PostService = {
@@ -11,5 +11,10 @@ export const postService: PostService = {
         if (newPost.status === "error") return error(newPost.message)
 
         return success(newPost.data)
+    },
+
+    getAllPosts: async () => {
+        const posts = await postRepository.getAllPosts()
+        return posts
     }
 }

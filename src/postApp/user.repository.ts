@@ -12,7 +12,21 @@ export const postRepository: PostRepository = {
             const newPost = await prismaClient.post.create({
                 data
             })
+
+            if (!newPost) return error("Failed to create post")
+
             return success("Post created successfully")
+        } catch (err) {
+            return error(`${err}`)
+        }
+    },
+    getAllPosts: async () => {
+        try {
+            const allPosts = await prismaClient.post.findMany()
+
+            if (!allPosts) return error("No posts found")
+
+            return success(allPosts)
         } catch (err) {
             return error(`${err}`)
         }
