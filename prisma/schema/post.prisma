@@ -3,5 +3,5 @@ model Post {
     title   String
     content String?
     authorId Int
-    // author   User @relation("PostsAuthored", fields: [authorId], references: [id])
+    tags Tag[]
 }

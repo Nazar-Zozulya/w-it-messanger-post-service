@@ -1,5 +1,5 @@
 import { PostController } from "../types/post.types";
-import { postService } from "./user.service";
+import { postService } from "./post.service";
 
 
 

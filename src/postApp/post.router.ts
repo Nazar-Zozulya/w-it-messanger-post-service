@@ -1,5 +1,5 @@
 import { Router } from 'express'
-import { postController } from './user.controller'
+import { postController } from './post.controller'
 
 
 

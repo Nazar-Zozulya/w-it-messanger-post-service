@@ -1,6 +1,6 @@
 import { error, success } from "../tools/result"
 import { PostService } from "../types/post.types";
-import { postRepository } from "./user.repository";
+import { postRepository } from "./post.repository";
 
 export const postService: PostService = {
     createPost: async (data) => {
