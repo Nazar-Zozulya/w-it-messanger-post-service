@@ -142,3 +142,7 @@ dist
 
 
 .db
+
+#Prisma
+/prisma/db
+/prisma/migrations
