@@ -7,6 +7,7 @@ const router = Router()
 
 router.post("/create", postController.createPost)
 router.get("/all", postController.getAllPosts)
+router.delete("/delete",postController.deletePost)
 
 
 

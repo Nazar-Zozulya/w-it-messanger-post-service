@@ -16,5 +16,11 @@ export const postController: PostController = {
         const result = await postService.getAllPosts()
 
         res.json(result)
+    },
+    deletePost: async (req, res) => {
+        const { id } = req.body
+        const result = await postService.deletePost(id)
+
+        res.json(result)
     }
 }

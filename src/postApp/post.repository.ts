@@ -15,19 +15,40 @@ export const postRepository: PostRepository = {
 
             if (!newPost) return error("Failed to create post")
 
-            return success("Post created successfully")
+            return success(newPost)
         } catch (err) {
             return error(`${err}`)
         }
     },
     getAllPosts: async () => {
         try {
-            const allPosts = await prismaClient.post.findMany()
+            const allPosts = await prismaClient.post.findMany({
+                include: {
+                    tags: true
+                }
+            })
 
             if (!allPosts) return error("No posts found")
 
             return success(allPosts)
         } catch (err) {
+            return error(`${err}`)
+        }
+    },
+
+    deletePost: async (id) => {
+        try {
+            const deletedPost = await prismaClient.post.delete({
+                where: {
+                    id
+                }
+            })
+
+            if (!deletedPost) return error ('problems with deleting post')
+            
+            return success(deletedPost)
+        } catch (err) {
+            console.log(`${err}`)
             return error(`${err}`)
         }
     }
