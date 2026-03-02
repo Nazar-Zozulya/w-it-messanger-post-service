@@ -10,7 +10,6 @@ export type Tag = Prisma.TagGetPayload<{}>;
 export interface TagService {
     createOrAddTagToPost(tag: string, postId: number): Promise<Result<string>>
     getPostsByTag(tag: string): Promise<Result<Post[]>>
-
 }
 
 export interface TagRepository {

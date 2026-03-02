@@ -18,8 +18,8 @@ export const postController: PostController = {
         res.json(result)
     },
     deletePost: async (req, res) => {
-        const { id } = req.body
-        const result = await postService.deletePost(id)
+        const { id, userId } = req.body
+        const result = await postService.deletePost(id, userId)
 
         res.json(result)
     }
