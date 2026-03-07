@@ -146,3 +146,8 @@ dist
 #Prisma
 /prisma/db
 /prisma/migrations
+
+
+# media data
+
+/media

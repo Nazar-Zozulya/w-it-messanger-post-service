@@ -9,6 +9,12 @@ export type PostWithTags = Prisma.PostGetPayload<{
     }
 }>;
 
+export type PostWithTagsAndImages = Prisma.PostGetPayload<{
+    include: {
+        tags: true
+    }
+}>;
+
 export type TagsFormPost = Prisma.PostGetPayload<{
     select: {
         tags: true
@@ -16,9 +22,9 @@ export type TagsFormPost = Prisma.PostGetPayload<{
 }>
 
 export interface PostCreateCredentials extends Post {
-    tags: string[]
-    images: string[]
-    links: string[]
+    tags?: string[]
+    images?: string[]
+    links?: string[]
 }
 
 
@@ -30,13 +36,13 @@ export interface PostController {
 
 export interface PostService {
     createPost: (data: PostCreateCredentials | undefined) => Promise<Result<PostWithTags | Post>>;
-    getAllPosts: () => Promise<Result<PostWithTags[]>>;
+    getAllPosts: () => Promise<Result<PostWithTagsAndImages[]>>;
     deletePost: (id: number, userId: number) => Promise<Result<Post>>
 }
 
 export interface PostRepository {
-    createPost: (data: Post) => Promise<Result<Post>>;
-    getAllPosts: () => Promise<Result<PostWithTags[]>>;
+    createPost: (data: Post, images?: string[]) => Promise<Result<Post>>;
+    getAllPosts: () => Promise<Result<PostWithTagsAndImages[]>>;
     deletePost: (id: number) => Promise<Result<Post>>
     getPost: (id: number) => Promise<Result<Post>>
     getTagsFromPost(postId: number): Promise<Result<TagsFormPost>>

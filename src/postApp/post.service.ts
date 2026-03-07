@@ -10,7 +10,7 @@ export const postService: PostService = {
 		// разделяю дату поста и теги на 2 разные переменные
 		const { tags, images, links, ...postData } = data
 
-		const newPost = await postRepository.createPost(postData)
+		const newPost = await postRepository.createPost(postData, images)
 
 		if (newPost.status === "error") return newPost
 
