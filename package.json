@@ -11,7 +11,9 @@
     "server": "nodemon src/server.ts",
     "prisma:format": "prisma format",
     "prisma:migrate": "prisma migrate dev",
-    "prisma:generate": "prisma generate"
+    "prisma:generate": "prisma generate",
+    "docker:build": "docker build -t w-it-messanger-post-service .",
+    "docker:run": "docker run -p 8001:8001 --env-file .env w-it-messanger-post-service"
   },
   "keywords": [],
   "author": "",
