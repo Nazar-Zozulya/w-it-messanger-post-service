@@ -8,11 +8,11 @@ const app: Express = express()
 
 const PORT: number = Number(process.env.PORT) || 8001
 
-const HOST: string = process.env.HOST || "localhost"
+const HOST: string = process.env.HOST || "0.0.0.0"
 
 app.use(cors({
     origin: "http://localhost:3000",
-    methods: ["GET", "POST", "PUT", "DELETE"],
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
     credentials: true
 }));
 app.use(express.json({ limit: "50mb" }))
