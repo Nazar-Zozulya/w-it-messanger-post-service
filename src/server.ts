@@ -6,9 +6,9 @@ import postRouter from './postApp/post.router'
 const app: Express = express()
 
 
-const PORT: number = Number(process.env.PORT) || 8001
+const PORT: number = Number(process.env.PORT) || 0
 
-const HOST: string = process.env.HOST || "0.0.0.0"
+const HOST: string = process.env.HOST || ""
 
 app.use(cors({
     origin: "http://localhost:3000",
