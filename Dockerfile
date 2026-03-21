@@ -6,6 +6,15 @@ COPY package*.json ./
 RUN npm install
 
 COPY prisma ./prisma
+
+ARG DATABASE_URL
+ARG PORT
+ARG HOST
+
+ENV DATABASE_URL=$DATABASE_URL
+ENV PORT=$PORT
+ENV HOST=$HOST
+
 RUN npx prisma generate
 
 COPY . .

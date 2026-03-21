@@ -5,3 +5,9 @@ Dockerfile
 dist
 build
 .env
+
+/src/generated
+
+/prisma/migrations
+
+/prisma/db

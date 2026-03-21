@@ -6,9 +6,9 @@ import postRouter from './postApp/post.router'
 const app: Express = express()
 
 
-const PORT: number = Number(process.env.PORT) || 0
+const PORT: number = Number(process.env.PORT) || 8001
 
-const HOST: string = process.env.HOST || ""
+const HOST: string = process.env.HOST || "0.0.0.0"
 
 app.use(cors({
     origin: "http://localhost:3000",
@@ -18,6 +18,8 @@ app.use(cors({
 app.use(express.json({ limit: "50mb" }))
 
 app.use("/api/post", postRouter)
+
+app.get("/health", (req, res) => {res.status(200).send("OK")})
 
 
 app.listen(PORT, HOST, ()=>{
