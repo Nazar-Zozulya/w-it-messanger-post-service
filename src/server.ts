@@ -19,7 +19,7 @@ app.use(express.json({ limit: "50mb" }))
 
 app.use("/api/post", postRouter)
 
-app.get("/health", (req, res) => {res.status(200).send("OK")})
+app.get("/api/post/health", (req, res) => {res.status(200).send("OK")})
 
 
 app.listen(PORT, HOST, ()=>{
