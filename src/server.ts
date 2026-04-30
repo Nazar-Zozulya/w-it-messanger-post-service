@@ -1,6 +1,7 @@
 import express, {Express} from 'express'
 import cors from 'cors'
 import postRouter from './postApp/post.router'
+import { Kafka } from "kafkajs"
 
 
 const app: Express = express()
@@ -21,6 +22,34 @@ app.use("/api/post", postRouter)
 
 app.get("/api/post/health", (req, res) => {res.status(200).send("OK")})
 
+const kafka = new Kafka({
+  clientId: 'post_service',
+  brokers: ['kafka:9092'] // Replace with your broker addresses
+});
+
+const producer = kafka.producer()
+
+
+const run = async () => {
+    await producer.connect()
+
+    app.get("/api/post/kafka-test", async (req, res) => {
+        try {
+            await producer.send({
+            topic: "test-topic",
+            messages: [
+                    {value : "idi nahuy"}
+                ]
+            })
+            res.status(200).send("okak")
+        } catch(err) {
+            res.status(500).send(`${err}`)
+        }
+    })
+
+}
+
+run().catch(console.error);
 
 app.listen(PORT, HOST, ()=>{
     console.log(`Server is running at http://${HOST}:${PORT}`)

@@ -8,6 +8,6 @@ build
 
 /src/generated
 
-/prisma/migrations
+# /prisma/migrations
 
 /prisma/db

@@ -21,4 +21,4 @@ COPY . .
 
 EXPOSE 8001
 
-CMD ["sh", "-c", "npx prisma migrate dev --name init && npm run server"]
+CMD ["sh", "-c", "npx prisma migrate deploy && npm run server"]
