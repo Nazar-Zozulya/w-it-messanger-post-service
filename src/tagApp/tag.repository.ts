@@ -157,7 +157,6 @@ export const tagRepository: TagRepository = {
 
     isHasTag: async (tag) => {
         try{
-
             const findedTag = await prismaClient.tag.findUnique({
                 where: {
                     name: tag

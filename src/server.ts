@@ -9,6 +9,7 @@ const app: Express = express()
 
 const PORT: number = Number(process.env.PORT) || 8001
 
+
 const HOST: string = process.env.HOST || "0.0.0.0"
 
 app.use(cors({
@@ -22,34 +23,34 @@ app.use("/api/post", postRouter)
 
 app.get("/api/post/health", (req, res) => {res.status(200).send("OK")})
 
-const kafka = new Kafka({
-  clientId: 'post_service',
-  brokers: ['kafka:9092'] // Replace with your broker addresses
-});
+// const kafka = new Kafka({
+//   clientId: 'post_service',
+//   brokers: ['kafka:9092'] // Replace with your broker addresses
+// });
 
-const producer = kafka.producer()
+// const producer = kafka.producer()
 
 
-const run = async () => {
-    await producer.connect()
+// const run = async () => {
+//     await producer.connect()
 
-    app.get("/api/post/kafka-test", async (req, res) => {
-        try {
-            await producer.send({
-            topic: "test-topic",
-            messages: [
-                    {value : "idi nahuy"}
-                ]
-            })
-            res.status(200).send("okak")
-        } catch(err) {
-            res.status(500).send(`${err}`)
-        }
-    })
+//     app.get("/api/post/kafka-test", async (req, res) => {
+//         try {
+//             await producer.send({
+//             topic: "test-topic",
+//             messages: [
+//                     {value : "idi nahuy"}
+//                 ]
+//             })
+//             res.status(200).send("okak")
+//         } catch(err) {
+//             res.status(500).send(`${err}`)
+//         }
+//     })
 
-}
+// }
 
-run().catch(console.error);
+// run().catch(console.error);
 
 app.listen(PORT, HOST, ()=>{
     console.log(`Server is running at http://${HOST}:${PORT}`)
